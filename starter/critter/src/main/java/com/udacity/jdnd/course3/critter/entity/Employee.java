@@ -13,6 +13,24 @@ public class Employee {
     @ElementCollection(targetClass = DaysOfWeek.class)
     private Set<DaysOfWeek> daysAvailable = new HashSet<>();
 
+    public Employee() {}
 
+    public Employee(long id, String name, Set<EmployeeSkill> skills, Set<DayOfWeek> daysAvailable) {
+        this.id = id;
+        this.name = name;
+        this.skills = skills;
+        this.daysAvailable = daysAvailable;
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
