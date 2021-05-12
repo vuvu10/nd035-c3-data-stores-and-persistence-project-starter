@@ -1,6 +1,7 @@
 package com.udacity.jdnd.course3.critter.entity;
 
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.FetchType;
 
 @Entity
 @Table(name = "Pet")
