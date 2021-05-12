@@ -1,5 +1,13 @@
-@Entity
+package com.udacity.jdnd.course3.critter.entity;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Set;
+import javax.persistence.DaysOfWeek;
+
+
+@Entity
 public class Employee {
     @Id
     @GeneratedValue
