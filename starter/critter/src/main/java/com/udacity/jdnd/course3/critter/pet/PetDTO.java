@@ -20,6 +20,14 @@ public class PetDTO {
     private LocalDate birthDate;
     private String notes;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public PetType getType() {
         return type;
     }
