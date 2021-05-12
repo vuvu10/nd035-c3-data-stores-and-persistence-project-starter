@@ -1,3 +1,10 @@
+package com.udacity.jdnd.course3.critter.entity;
+
+import java.util.List;
+import javax.persistence.OneToMany;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 @Entity
 public class Customer {
     @Id
@@ -15,6 +22,7 @@ public class Customer {
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "customer",
             cascade = CascadeType.ALL)
+
     private List<Pet> pets;
 
     public Long getId() {
