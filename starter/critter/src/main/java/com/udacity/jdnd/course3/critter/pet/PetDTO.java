@@ -7,11 +7,6 @@ import java.time.LocalDate;
  * to the database directly.
  */
 public class PetDTO {
-    @Id
-    @GeneratedValue
-
-    @ManyToOne
-    private Customer customer;
 
     private long id;
     private PetType type;
