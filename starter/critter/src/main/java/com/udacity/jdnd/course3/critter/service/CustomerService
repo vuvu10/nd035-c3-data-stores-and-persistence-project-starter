@@ -18,7 +18,7 @@ public class CustomerService {
         if (owner.isPresent()){
             return owner.get();
         } else {
-            throw new objectNotFoundException(300,"customer with id: "+cusomterId + " not found");
+            throw new objectNotFoundException(300,"customer with id: "+  cusomterId + " not found");
         }
     }
 }
