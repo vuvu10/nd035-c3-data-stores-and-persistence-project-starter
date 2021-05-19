@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface employeeRepository extends JpaRepository<Employee, Long>{
-    List<Employee>();
+    List<Employee>findAllByDaysAvailable(DaysOfWeek daysOfWeek);
 }
