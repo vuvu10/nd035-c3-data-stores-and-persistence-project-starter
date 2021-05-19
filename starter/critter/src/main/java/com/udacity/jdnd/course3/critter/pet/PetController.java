@@ -1,13 +1,14 @@
 package com.udacity.jdnd.course3.critter.pet;
 
-import org.springframework.web.bind.annotation.*;
-import com.udacity.jdnd.course3.critter.PetDTO;
-import com.udacity.jdnd.course3.critter.Entity.Pet;
+//import org.springframework.web.bind.annotation.*;
+import com.udacity.jdnd.course3.critter.pet.PetDTO;
+import com.udacity.jdnd.course3.critter.entity.Pet;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Handles web requests related to Pets.
@@ -49,13 +50,13 @@ public class PetController {
 
     @GetMapping
     public List<PetDTO> getPets(){
-
-        throw new UnsupportedOperationException();
+        List<Pet> pet = petService.findAllPet();
+        return pet.stream().map(this::getPet).collect(Collectors.toList());
     }
 
     @GetMapping("/owner/{ownerId}")
     public List<PetDTO> getPetsByOwner(@PathVariable long ownerId) {
-        List<Pet> pet = petService.findPetsByOwner(OwnerId);
+        List<Pet> pet = petService.findPetsByCustomerId(OwnerId);
         List<PetDTO> petDTO = new ArrayList<PetDTO>();
 
         for (Pet pet: pet) {
