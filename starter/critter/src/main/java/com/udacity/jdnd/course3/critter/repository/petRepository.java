@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface petRepository extends JpaRepository<Pet, Long>{
-    List<Pet>(Long );
+    List<Pet>findAllByCustomerId(Long id);
 }
