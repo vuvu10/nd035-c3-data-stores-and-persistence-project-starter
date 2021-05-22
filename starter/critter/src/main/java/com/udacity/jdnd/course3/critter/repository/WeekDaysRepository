@@ -4,6 +4,6 @@ package com.udacity.jdnd.course3.critter.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
-public interface WeekdaysRepository extends JpaRepository<Weekdays, Long> {
+public interface WeekDaysRepository extends JpaRepository<Weekdays, Long> {
 
 }
