@@ -1,4 +1,28 @@
 package com.udacity.jdnd.course3.critter.service;
 
 import com.udacity.jdnd.course3.critter.entity.Employee;
-import com.udacity.jdnd.course3.critter.repository.Emplo
+import com.udacity.jdnd.course3.critter.repository.employeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EmployeeService {
+    private final employeeRepository employeeRepository;
+
+    public Employee save(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    public Employee fingById(Long employeeId) {
+        return employeeRepository.findById(employeeId)
+                .orElseThrow(EntityNotFoundException::new);
+    }
+
+
+
+
+
+
+
+
+}
