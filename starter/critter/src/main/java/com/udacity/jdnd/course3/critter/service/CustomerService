@@ -2,6 +2,7 @@
 
 @Service
 public class CustomerService {
+
     @Autowired
     CustomerRepository customerRepository;
 
@@ -13,12 +14,8 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    public Customer findById(long customerId) {
-        Optional<Customer> owner = customerRepository.findById(customerId);
-        if (owner.isPresent()){
-            return owner.get();
-        } else {
-            throw new objectNotFoundException(300,"customer with id: "+  cusomterId + " not found");
-        }
+    public Customer findById(Long id) {
+        return customerRepository.getOne(id);
+
     }
 }
