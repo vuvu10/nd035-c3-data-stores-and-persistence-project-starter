@@ -3,12 +3,14 @@ package com.udacity.jdnd.course3.critter.service;
 import com.udacity.jdnd.course3.critter.entity.Customer;
 import com.udacity.jdnd.course3.critter.repository.customerRepository;
 import com.udacity.jdnd.course3.critter.repository.petRepository;
-
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
 public class CustomerService {
+
+    private final PetRepository petRepository;
+    private final CustomerRepository customerRepository;
 
     @Autowired
     CustomerRepository customerRepository;
