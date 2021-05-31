@@ -13,11 +13,20 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    public Employee fingById(Long employeeId) {
+    public Employee findById(Long employeeId) {
         return employeeRepository.findById(employeeId)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
+    public void setAvailability(Set<DayOfWeek> days, Long id) {
+        Employee employee = employeeRepository.getOne(id);
+        employee.setDaysAvailable(daysAvailable);
+        employeeRepository.save(employee);
+    }
+
+    public Employee getOne(Long id) {
+        return employeeRepository.getOne(id);
+    }
 
 
 
