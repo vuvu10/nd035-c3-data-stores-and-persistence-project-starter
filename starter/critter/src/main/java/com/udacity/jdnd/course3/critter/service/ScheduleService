@@ -36,4 +36,19 @@ public class ScheduleService {
     public schedule save(Schedule schedule) {
         return scheduleRepository.save(schedule);
     }
+
+    public List<Schedule>findAllSchedulesForPet(Long PetId) {
+        Pet pet = petService.findAllPets(Pet);
+        return scheduleRepository.findAllPets(Pet);
+    }
+
+    public List<Schedule>findAllSchedulesForEmployee(Long employeeId) {
+        Employee employee = employeeService.findEmployeeById(employeeId);
+        return scheduleRepository.findAllEmployee(employee);
+    }
+
+    public List<Schedule>findAllSchedulesForCustomer(Long CustomerId) {
+        Customer customer = customerService.findById(CustomerId);
+        return scheduleRepository.findAllPetsIn(customer.findPets);
+    }
 }
