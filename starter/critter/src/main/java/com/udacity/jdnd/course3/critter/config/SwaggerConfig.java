@@ -33,6 +33,7 @@ public class SwaggerConfig {
         return new ApiInfo(
                 "Pet Care API",
                 "This PI maintains a list of customer, employee, registration and schedule services for your Pet.",
+
                 "1.0",
                 "htpp://www.udacity.com/tos",
                 new Contact("DC", "www.udacity.com", "dcsiona@gmail.com"),
