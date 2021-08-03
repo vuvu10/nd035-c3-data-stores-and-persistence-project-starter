@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class PetDTO {
 
     private long id;
-    private PetType type;
+    private PetType petType;
     private String name;
     private long ownerId;
     private LocalDate birthDate;
@@ -24,11 +24,11 @@ public class PetDTO {
     }
 
     public PetType getType() {
-        return type;
+        return petType;
     }
 
-    public void setType(PetType type) {
-        this.type = type;
+    public void setType(PetType petType) {
+        this.petType = petType;
     }
 
     public String getName() {

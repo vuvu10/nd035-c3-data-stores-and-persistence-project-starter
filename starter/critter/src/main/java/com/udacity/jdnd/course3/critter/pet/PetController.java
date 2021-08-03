@@ -36,16 +36,16 @@ public class PetController {
 
     @PostMapping
     public PetDTO savePet(@RequestBody PetDTO petDTO) {
-        Pet pet = convertPetToPetDTO(petDTO);
+        Pet pet = convertPetDTOToPet(petDTO);
         Pet savedPet = petService.savePet(pet);
-        return convertPetToPetDTO(Pet pet);
+        return convertPetDTOToPet(Pet, pet);
 
     }
 
     @GetMapping("/{petId}")
     public PetDTO getPet(@PathVariable long petId) {
         Pet pet = petService.findPetById(petId);
-        return convertPetToPetDTO(Pet pet);
+        return convertPetToPetDTO(Pet, pet);
     }
 
     @GetMapping
