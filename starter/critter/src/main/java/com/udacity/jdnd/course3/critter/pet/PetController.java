@@ -19,10 +19,11 @@ public class PetController {
 
     @Autowired
     private PetService petService;
+    private PetDTO PetDTO;
 
 
-    private pet convertPetToPetDTO(PetDTO petDTO) {
-        Pet pet = new pet();
+    private Pet convertPetToPetDTO(PetDTO petDTO) {
+        Pet pet = new Pet();
         BeanUtils.copyProperties(PetDTO, pet);
         return pet;
     }
@@ -36,22 +37,19 @@ public class PetController {
 
     @PostMapping
     public PetDTO savePet(@RequestBody PetDTO petDTO) {
-        Pet pet = convertPetDTOToPet(petDTO);
-        Pet savedPet = petService.savePet(pet);
-        return convertPetDTOToPet(Pet, pet);
+        return this.petService.getPet(petId);
 
     }
 
     @GetMapping("/{petId}")
     public PetDTO getPet(@PathVariable long petId) {
-        Pet pet = petService.findPetById(petId);
-        return convertPetToPetDTO(Pet, pet);
+        return this.petService(petDTO);
     }
 
     @GetMapping
     public List<PetDTO> getPets(){
         List<Pet> pet = petService.findAllPet();
-        return pet.stream().map(this::getPet).collect(Collectors.toList());
+        return this.petService.getPet(petId);
     }
 
     @GetMapping("/owner/{ownerId}")
