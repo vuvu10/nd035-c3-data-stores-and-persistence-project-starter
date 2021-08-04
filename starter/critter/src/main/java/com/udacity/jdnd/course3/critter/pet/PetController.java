@@ -5,6 +5,11 @@ import com.udacity.jdnd.course3.critter.pet.PetDTO;
 import com.udacity.jdnd.course3.critter.entity.Pet;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,44 +27,27 @@ public class PetController {
     private PetDTO PetDTO;
 
 
-    private Pet convertPetToPetDTO(PetDTO petDTO) {
-        Pet pet = new Pet();
-        BeanUtils.copyProperties(PetDTO, pet);
-        return pet;
-    }
-
-    private PetDTO convertPetToPetDTO(Pet pet) {
-        PetDTO petDTO = new PetDTO();
-        BeanUtils.copyProperties(pet, petDTO);
-        return petDTO;
-    }
-
-
     @PostMapping
     public PetDTO savePet(@RequestBody PetDTO petDTO) {
-        return this.petService.getPet(petId);
-
+        return this.petService.savePet(petDTO);
     }
 
     @GetMapping("/{petId}")
     public PetDTO getPet(@PathVariable long petId) {
-        return this.petService(petDTO);
+        return this.petService.getPet(petId);
     }
 
     @GetMapping
-    public List<PetDTO> getPets(){
-        List<Pet> pet = petService.findAllPet();
-        return this.petService.getPet(petId);
+    public List<PetDTO> getPets() {
+        return this.petService.getsPet();
+
     }
 
     @GetMapping("/owner/{ownerId}")
     public List<PetDTO> getPetsByOwner(@PathVariable long ownerId) {
-        List<Pet> pet = petService.findPetsByCustomerId(OwnerId);
-        List<PetDTO> petDTO = new ArrayList<PetDTO>();
+        return this.petService.getPetByOwner(OwnerId);
 
-        for (Pet pet: pet) {
-            petDTO.add(convertPetToPetDTO(pet));
-        }
-        return petDTO;
     }
+
+
 }
