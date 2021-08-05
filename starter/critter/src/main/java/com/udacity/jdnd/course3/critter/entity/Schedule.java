@@ -12,7 +12,7 @@ public class Schedule {
     @GeneratedValue
     private Long id;
 
-    private LocalDate date;
+    private final LocalDate date;
 
     @ManyToMany
     private List<Employee> employees;
