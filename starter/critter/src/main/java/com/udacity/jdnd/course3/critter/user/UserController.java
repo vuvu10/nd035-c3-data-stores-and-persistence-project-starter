@@ -1,6 +1,9 @@
 package com.udacity.jdnd.course3.critter.user;
 
+import com.udacity.jdnd.course3.critter.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.udacity.jdnd.course3.critter.service.CustomerService;
+import com.udacity.jdnd.course3.critter.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.DayOfWeek;
@@ -18,8 +21,8 @@ import java.util.Set;
 public class UserController {
 
     @Autowired
-    private CustomerService customerService;
-    private PetRepository petRepository;
+    CustomerService customerService;
+    EmployeeService employeeService;
 
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
