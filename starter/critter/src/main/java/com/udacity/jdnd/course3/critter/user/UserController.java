@@ -3,7 +3,10 @@ package com.udacity.jdnd.course3.critter.user;
 import com.udacity.jdnd.course3.critter.entity.Employee;
 import com.udacity.jdnd.course3.critter.entity.Pet;
 import com.udacity.jdnd.course3.critter.entity.Customer;
+import com.udacity.jdnd.course3.critter.pet.PetDTO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.udacity.jdnd.course3.critter.service.PetService;
 import com.udacity.jdnd.course3.critter.service.CustomerService;
 import com.udacity.jdnd.course3.critter.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +23,10 @@ import java.util.Set;
  */
 @RestController
 @RequestMapping("/user")
-public class UserController<CustomerService> {
+public class UserController {
 
     @Autowired
+    private PetService petService;
     private CustomerService customerService;
     private EmployeeService employeeService;
 
@@ -64,5 +68,49 @@ public class UserController<CustomerService> {
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeDTO) {
         return this.employeeService.findEmployeeService(employeeRequestDTO);
     }
+
+    private static PetDTO convertEntityToPetDTO(Pet pet) {
+        PetDTO petDTO = new PetDTO();
+        BeanUtils.copyProperties(pet, petDTO);
+        return petDTO;
+    }
+
+    private static Pet convertPetDTOToEntity(PetDTO petDTO) {
+        Pet pet = new Pet();
+        BeanUtils.copyProperties(petDTO, pet);
+        return pet;
+    }
+
+    private Customer convertCustomerDTOToEntity(CustomerDTO customerDTO) {
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerDTO, customer);
+        return customer;
+    }
+
+    private static CustomerDTO convertCustomerEntityToDto(Customer customer) {
+        CustomerDTO customerDTO = new CustomerDTO();
+        BeanUtils.copyProperties(customer, customerDTO);
+        return customerDTO;
+    }
+
+    private Employee convertEmployeeDTOToEntity(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO, employee);
+
+        employee.setAvailability(employeeDTO.getDaysAvailable());
+
+        return employee;
+
+    }
+
+    private static EmployeeDTO convertEmployeeEntityToDTO(Employee employee) {
+        EmployeeDTO employeeDTO = new EmployeeDTO();
+        BeanUtils.copyProperties(employee, employeeDTO);
+
+        employeeDTO.setDaysAvailable(employee.getAvailability());
+        return employeeDTO;
+    }
+
+
 
 }
