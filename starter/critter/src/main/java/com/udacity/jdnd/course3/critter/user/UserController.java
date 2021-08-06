@@ -1,6 +1,8 @@
 package com.udacity.jdnd.course3.critter.user;
 
 import com.udacity.jdnd.course3.critter.entity.Employee;
+import com.udacity.jdnd.course3.critter.entity.Pet;
+import com.udacity.jdnd.course3.critter.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.udacity.jdnd.course3.critter.service.CustomerService;
 import com.udacity.jdnd.course3.critter.service.EmployeeService;
@@ -18,11 +20,11 @@ import java.util.Set;
  */
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class UserController<CustomerService> {
 
     @Autowired
-    CustomerService customerService;
-    EmployeeService employeeService;
+    private CustomerService customerService;
+    private EmployeeService employeeService;
 
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
@@ -38,7 +40,7 @@ public class UserController {
     @GetMapping("/customer/pet/{petId}")
     public CustomerDTO getOwnerByPet(@PathVariable long petId){
 
-        return this.customerService.getOnwerByPet(petId);
+        return this.customerService.getOwerByPet(petId);
     }
 
     @PostMapping("/employee")
@@ -60,7 +62,7 @@ public class UserController {
 
     @GetMapping("/employee/availability")
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeDTO) {
-        return employeeService.findEmployeeService(employeeRequestDTO);
+        return this.employeeService.findEmployeeService(employeeRequestDTO);
     }
 
 }
