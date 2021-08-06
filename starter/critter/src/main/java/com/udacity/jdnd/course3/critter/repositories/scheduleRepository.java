@@ -1,8 +1,8 @@
-package com.udacity.jdnd.course3.critter.repository;
+package com.udacity.jdnd.course3.critter.repositories;
 
-import com.udacity.jdnd.course3.critter.entity.schedule;
-import com.udacity.jdnd.course3.critter.entity.Pet;
-import com.udacity.jdnd.course3.critter.entity.Schedule;
+import com.udacity.jdnd.course3.critter.entities.schedule;
+import com.udacity.jdnd.course3.critter.entities.Pet;
+import com.udacity.jdnd.course3.critter.entities.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

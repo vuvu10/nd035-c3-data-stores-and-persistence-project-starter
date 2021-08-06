@@ -1,4 +1,4 @@
-package com.udacity.jdnd.course3.critter.entity;
+package com.udacity.jdnd.course3.critter.entities;
 
 import java.util.List;
 import javax.persistence.OneToMany;
