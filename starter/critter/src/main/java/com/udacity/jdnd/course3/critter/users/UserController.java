@@ -67,7 +67,7 @@ public class UserController {
 
     @GetMapping("/employee/availability")
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeDTO) {
-        return this.employeeService.findEmployeeService(employeeRequestDTO);
+        return this.employeeService.findEmployeeForService(employeeRequestDTO);
     }
 
     private static PetDTO convertEntityToPetDTO(Pet pet) {
