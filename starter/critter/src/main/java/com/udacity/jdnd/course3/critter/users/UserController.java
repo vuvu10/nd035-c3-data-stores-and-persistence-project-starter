@@ -4,6 +4,7 @@ import com.udacity.jdnd.course3.critter.entities.Employee;
 import com.udacity.jdnd.course3.critter.entities.Pet;
 import com.udacity.jdnd.course3.critter.entities.Customer;
 import com.udacity.jdnd.course3.critter.pets.PetDTO;
+import org.assertj.core.util.Sets;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.udacity.jdnd.course3.critter.services.PetService;
@@ -84,6 +85,14 @@ public class UserController {
     private Customer convertCustomerDTOToEntity(CustomerDTO customerDTO) {
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDTO, customer);
+
+        List<Long> petIds = customerDTO.getPetIds();
+        if (petIds != null) {
+            List<Pet>pets = petService.getAllPetsByIds(petIds);
+
+            customer.setPets(Sets.newHashSet(pets));
+        }
+
         return customer;
     }
 

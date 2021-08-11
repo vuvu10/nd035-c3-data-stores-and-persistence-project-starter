@@ -1,7 +1,9 @@
 package com.udacity.jdnd.course3.critter.pets;
 
 //import org.springframework.web.bind.annotation.*;
+import com.udacity.jdnd.course3.critter.entities.Pet;
 import com.udacity.jdnd.course3.critter.services.PetService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +42,25 @@ public class PetController {
         return this.petService.getPetByOwner(OwnerId);
 
     }
+
+    private static PetDTO convertEntityToPetDTO(Pet pet) {
+        PetDTO petDTO = new PetDTO();
+        BeanUtils.copyProperties(pet, petDTO);
+
+        petDTO.setOwnerId(pet.getOwner().getId());
+
+        return petDTO;
+    }
+
+    private static Pet convertPetDTOToEntity(PetDTO petDTO) {
+        Pet pet = new Pet();
+        BeanUtils.copyProperties(petDTO, pet);
+        return pet;
+    }
+
+
+
+
 
 
 }
