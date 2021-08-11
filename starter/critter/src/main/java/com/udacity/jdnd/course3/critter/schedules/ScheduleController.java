@@ -1,7 +1,9 @@
 package com.udacity.jdnd.course3.critter.schedules;
 
+import com.udacity.jdnd.course3.critter.entities.Schedule;
 import com.udacity.jdnd.course3.critter.entities.schedule;
 import com.udacity.jdnd.course3.critter.services.ScheduleService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,5 +43,17 @@ public class ScheduleController {
     @GetMapping("/customer/{customerId}")
     public List<ScheduleDTO> getScheduleForCustomer(@PathVariable long customerId) {
         return this.scheduleService.getScheduleForCustomer(customerId);
+    }
+
+    private Schedule convertScheduleDTOToEntity(ScheduleDTO scheduleDTO) {
+        Schedule schedule = new Schedule();
+        BeanUtils.copyProperties(scheduleDTO, schedule);
+        return schedule;
+    }
+
+    private ScheduleDTO convertScheduleEntityToDTO(Schedule schedule) {
+        ScheduleDTO scheduleDTO = new ScheduleDTO();
+        BeanUtils.copyProperties(schedule, scheduleDTO);
+        return scheduleDTO;
     }
 }
