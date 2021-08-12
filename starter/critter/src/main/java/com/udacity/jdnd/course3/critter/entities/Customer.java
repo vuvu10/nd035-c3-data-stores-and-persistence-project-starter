@@ -1,30 +1,27 @@
 package com.udacity.jdnd.course3.critter.entities;
 
 import java.util.List;
-import javax.persistence.OneToMany;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.FetchType;
-import javax.persistence.CascadeType;
+import javax.persistence.*;
 
 
 @Entity
+//@Table(name = "CUSTOMER")
+
 public class Customer {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Nationalized
+    //@Nationalized
     private String name;
 
-    @Column(name="phone_number", length=10)
+    //@Column(name="phone_number", length=10)
     private String phoneNumber;
 
     private String notes;
 
-    @OneToMany(fetch = FetchType.LAZY,
-            mappedBy = "customer",
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "Customer", cascade = CascadeType.ALL)
+
 
     private List<Pet> pets;
 
