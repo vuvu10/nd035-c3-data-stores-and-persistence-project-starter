@@ -1,54 +1,26 @@
 package com.udacity.jdnd.course3.critter.service;
 
-import com.udacity.jdnd.course3.critter.entity.Employee;
-import com.udacity.jdnd.course3.critter.entity.Schedule;
-import com.udacity.jdnd.course3.critter.entity.Pet;
-import com.udacity.jdnd.course3.critter.entity.Customer;
-
-import com.udacity.jdnd.course3.critter.repository.ScheduleRepository;
-import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
-import com.udacity.jdnd.course3.critter.repository.PetRepository;
-import com.udacity.jdnd.course3.critter.repository.CustomerRepository;
-
 
 
 
 @Service
-public class ScheduleService {
+public class ScheduleService{
+    @Autowired
+    private ScheduleRepository sheduleRepository;
 
-    private ScheduleRepository scheduleRepository;
-    private EmployeeRepository employeeRepository;
+    @Autowired
     private PetRepository petRepository;
-    private CustomerRepository customerRepository;
 
-    public ScheduleService(ScheduleRepository scheduleRepository, EmployeeRepository employeeRepository, PetRepository petRepository, CustomerRepository customerRepository) {
-        this.scheduleRepository = scheduleRepository;
-        this.employeeRepository = employeeRepository;
-        this.petRepository = petRepository;
-        this.customerRepository = customerRepository;
-    }
-
-    public List<Schedule>getAll() {
-        return scheduleRepository.findAll();
-    }
+    @Autwired
+    private EmployeeRepo
 
 
-    public schedule save(Schedule schedule) {
-        return scheduleRepository.save(schedule);
-    }
 
-    public List<Schedule>findAllSchedulesForPet(Long PetId) {
-        Pet pet = petService.findAllPets(Pet);
-        return scheduleRepository.findAllPets(Pet);
-    }
 
-    public List<Schedule>findAllSchedulesForEmployee(Long employeeId) {
-        Employee employee = employeeService.findEmployeeById(employeeId);
-        return scheduleRepository.findAllEmployee(employee);
-    }
 
-    public List<Schedule>findAllSchedulesForCustomer(Long CustomerId) {
-        Customer customer = customerService.findById(CustomerId);
-        return scheduleRepository.findAllPetsIn(customer.findPets);
-    }
+
+
+
+
+
 }
